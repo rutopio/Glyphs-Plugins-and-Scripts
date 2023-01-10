@@ -1,17 +1,17 @@
 # jf Show Node Count
 
-A simple [Glyphs.app](https://glyphsapp.com/) plugin to display the count of nodes between multiple layers/masters for checking the compatibility easily.
+A [Glyphs.app](https://glyphsapp.com/) plugin to display the count of nodes between multiple layers/masters for checking the compatibility easily.
 
 An Chinese version is contained below.
 
-![](demo.png)
+![](default.png)
 
 ## Install
 
 1. Download `jfShowNodeCount.glyphsReporter` and open via Glyphs.
 2. Restart Glyphs (cmd+Q).
 3. Add parameters in *File > Font Info > Font > Custom Parameter*.
-4. Enable *View > jf Node Count*.
+4. Toggle *View > jf Node Count*.
 
 ## Custom Parameter
 
@@ -36,6 +36,10 @@ An Chinese version is contained below.
 - Use "|" as the delimiter: `20;｜;True;✅;❌`
 - Larger font size: `50;/;True;✅;❌`
 - Show "Perfect!" when layers have the same count of nodes: `20;/;True;Perfect!;❌`
+- ...and so on!
+
+
+![](customized.png)
 
 ## Environment
 
@@ -47,6 +51,10 @@ The plugin works in Glyphs 3.1 (3133) in macOS Monterey (12.6) with Python 3.9.1
 
 # jf Show Node Count
 
+用來顯示多個圖層 / 主板之間的總節點數，用來對主板之間的相容性。
+
+![](default.png)
+
 ## 安裝
 
 1. 下載 `jfShowNodeCount.glyphsReporter` ，並以 Glyphs 開啟.
@@ -57,14 +65,14 @@ The plugin works in Glyphs 3.1 (3133) in macOS Monterey (12.6) with Python 3.9.1
 
 ## Custom Parameter
 
-- jf Layer for Count：要比較的圖層名稱，以半形分號區別
-- jf Layer for Count Setting：顯示的設定，共五個值，預設為「20;/;True;✅;❌」，以半形分號分隔設定值
-	- 字體大小，預設為「20」
-    - 分隔號的樣式，預設為「/」
-    - 當比較的圖層們總節點數相同時，是否顯示標記，預設為「True」，若不顯示留空
-    - 當比較的圖層們總節點數「相同時」顯示的標記
+- `jf Layer for Count`：要比較的圖層名稱，以半形分號區別
+- `jf Layer for Count Setting`：顯示的設定，共五個值，預設為 `20;/;True;✅;❌` ，以半形分號分隔設定值
+	- 字體大小，預設為 `20`
+    - 分隔號的樣式，預設為 `/`
+    - 當比較的圖層們總節點數相同時，是否顯示標記，預設為`True`，若不顯示留空
+    - 當比較的圖層們總節點數「相同時」顯示的標記，預設為 `✅`。
       - 不顯示時留空
-    - 當比較的圖層們總節點數「不相同時」顯示的標記
+    - 當比較的圖層們總節點數「不相同時」顯示的標記，預設為 `❌`。
       - 不顯示時留空
 
 ## 範例
@@ -72,3 +80,11 @@ The plugin works in Glyphs 3.1 (3133) in macOS Monterey (12.6) with Python 3.9.1
 - 不想顯示相同與否的標記：「20;/;;;」
 - 想改用「｜」作為分隔線：「20;｜;True;✅;❌」
 - 字想更大：「50;/;True;✅;❌」
+
+![](customized.png)
+
+## 測試環境
+
+- Glyphs App version: Glyphs 3.1 (3133)
+- macOS version: macOS Monterey (12.6)
+- Python version: Python 3.9.1
