@@ -1,3 +1,11 @@
+#MenuTitle: Suffix Renamer
+#Created by ChingRu
+# -*- coding: utf-8 -*-
+__doc__="""
+A Glyphs.app script to rename the suffix of glyph name.
+"""
+
+
 MacroTab.title = "Suffix Renamer"
 font = Glyphs.font	
 Glyphs.clearLog()

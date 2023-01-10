@@ -12,10 +12,10 @@ An Chinese version is contained below.
 
 ## How to Use
 
-1. Open *Window > Macro Panel*
+1. Open *Window > Macro Panel*.
 2. Paste the code.
 3. Paste the glyph name into `swap` line.
-4. Click Run
+4. Click Run.
 
 
 ***
@@ -32,10 +32,10 @@ A, A.ss01 = A.ss01, A
 
 ## 使用方法
 
-1. 打開 Window > Macro Panel
-2. 貼上程式碼
+1. 打開 *Window > Macro Panel* 。
+2. 貼上程式碼。
 3. 把要交換的字符貼入 `swap` 行內。
-4. 按 Run
+4. 按 Run。
 
 
 

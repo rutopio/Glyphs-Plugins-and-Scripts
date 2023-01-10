@@ -14,7 +14,7 @@ An Chinese version is contained below.
 
 1. Open *Window > Macro Panel*
 2. Paste the code.
-3. Click Run
+3. Click Run.
 4. Read the console lod if there has an error.
 
 
@@ -30,9 +30,9 @@ An Chinese version is contained below.
 
 ## 使用方法
 
-1. 打開 Window > Macro Panel
-2. 貼上程式碼
-3. 按 Run
+1. 打開 *Window > Macro Panel*。
+2. 貼上程式碼。
+3. 按 Run。
 4. 如果遇到錯誤（通常是某個字符超過 20 個變體集上限），請閱讀 console 中跳出來的 error 說明。
 
 

@@ -8,10 +8,10 @@ An Chinese version is contained below.
 
 ## How to Use
 
-1. Open *Window > Macro Panel*
+1. Open *Window > Macro Panel*.
 2. Paste the code.
 3. Select the glyphs you want to check on glyphs panel. (cmd+A for all)
-4. Click Run
+4. Click Run.
 
 ## Custom Setting
 
@@ -51,10 +51,10 @@ The plugin works in Glyphs 3.1 (3133) in macOS Monterey (12.6) with Python 3.9.1
 
 ## 使用方法
 
-1. 打開 *Window > Macro Panel*
-2. 貼上程式碼
-3. 選取你要檢查的字符（全選 cmd+A）
-4. 按 Run
+1. 打開 *Window > Macro Panel*。
+2. 貼上程式碼。
+3. 選取你要檢查的字符（全選 cmd+A）。
+4. 按 Run。
 
 ## Custom Setting
 

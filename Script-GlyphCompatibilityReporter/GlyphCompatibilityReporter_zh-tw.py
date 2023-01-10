@@ -1,3 +1,11 @@
+#MenuTitle: Glyph Compatibility Reporter zh-tw
+#Created by ChingRu
+# -*- coding: utf-8 -*-
+__doc__="""
+A Glyphs.app script to check the compatibility for interpolating between two master, and print the report of problem glyphs.
+"""
+
+
 MacroTab.title = "Glyph Compatibility Reporter zh-tw"
 Glyphs.clearLog()
 font = Glyphs.font

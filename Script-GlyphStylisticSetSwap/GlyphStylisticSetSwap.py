@@ -1,5 +1,14 @@
+#MenuTitle: Glyph Stylistic Set Swap
+#Created by ChingRu
+# -*- coding: utf-8 -*-
+__doc__="""
+A Glyphs.app script to swap the glyphs between the first stylistic set (*.ss01) and the default set (*).
+"""
+
+
+MacroTab.title = "Glyph Stylistic Set Swap"
+font = Glyphs.font	
 Glyphs.clearLog()
-font = Glyphs.font
 
 swap = list("PASTE_THE_GLYPHS_NAME_YOU_WANT_TO_SWAP")
 

@@ -16,26 +16,26 @@ An Chinese version is contained below.
 ## Custom Parameter
 
 - `jf Layer for Count` (*required*)：The layer/master names, separated by semicolon.
-  - e.g., `Regular; Medium; Bold`
+  - e.g., `Regular; Medium; Bold`.
 - `jf Layer for Count Setting` (*optional*)：Display setting.
   - default: `20;/;True;✅;❌`, separated by semicolon.
   - val 1: Font size
-      - default: `20`
+      - default: `20`.
   - val 2: Style of the delimiter
-      - default: `/`
+      - default: `/`.
   - val 3: Whether to show the emoji/sign when the layers have the same number of nodes or not.
       - default: `True`. Keep it clear if you don't need it.
-  - val 4: When the layers have the same count of nodes
+  - val 4: When the layers have the same count of nodes.
       - default: `✅`. Keep it clear if you don't need it.
-  - val 5: When the layers do not have the same count of nodes
+  - val 5: When the layers do not have the same count of nodes.
       - default: `❌`. Keep it clear if you don't need it.
 
 ## Example
 
-- Do not show the emoji: `20;/;;;`
-- Use "|" as the delimiter: `20;｜;True;✅;❌`
-- Larger font size: `50;/;True;✅;❌`
-- Show "Perfect!" when layers have the same count of nodes: `20;/;True;Perfect!;❌`
+- Do not show the emoji: `20;/;;;`.
+- Use "|" as the delimiter: `20;｜;True;✅;❌`.
+- Larger font size: `50;/;True;✅;❌`.
+- Show "Perfect!" when layers have the same count of nodes: `20;/;True;Perfect!;❌`.
 - ...and so on!
 
 
