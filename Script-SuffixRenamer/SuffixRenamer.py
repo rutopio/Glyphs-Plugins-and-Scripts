@@ -1,4 +1,4 @@
-MacroTab.title = "SuffixRenamer"
+MacroTab.title = "Suffix Renamer"
 font = Glyphs.font	
 Glyphs.clearLog()
 
