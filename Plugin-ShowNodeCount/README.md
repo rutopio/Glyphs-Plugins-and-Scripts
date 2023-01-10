@@ -1,0 +1,74 @@
+# jf Show Node Count
+
+A simple [Glyphs.app](https://glyphsapp.com/) plugin to display the count of nodes between multiple layers/masters for checking the compatibility easily.
+
+An Chinese version is contained below.
+
+![](demo.png)
+
+## Install
+
+1. Download `jfShowNodeCount.glyphsReporter` and open via Glyphs.
+2. Restart Glyphs (cmd+Q).
+3. Add parameters in *File > Font Info > Font > Custom Parameter*.
+4. Enable *View > jf Node Count*.
+
+## Custom Parameter
+
+- `jf Layer for Count` (*required*)：The layer/master names, separated by semicolon.
+  - e.g., `Regular; Medium; Bold`
+- `jf Layer for Count Setting` (*optional*)：Display setting.
+  - default: `20;/;True;✅;❌`, separated by semicolon.
+  - val 1: Font size
+      - default: `20`
+  - val 2: Style of the delimiter
+      - default: `/`
+  - val 3: Whether to show the emoji/sign when the layers have the same number of nodes or not.
+      - default: `True`. Keep it clear if you don't need it.
+  - val 4: When the layers have the same count of nodes
+      - default: `✅`. Keep it clear if you don't need it.
+  - val 5: When the layers do not have the same count of nodes
+      - default: `❌`. Keep it clear if you don't need it.
+
+## Example
+
+- Do not show the emoji: `20;/;;;`
+- Use "|" as the delimiter: `20;｜;True;✅;❌`
+- Larger font size: `50;/;True;✅;❌`
+- Show "Perfect!" when layers have the same count of nodes: `20;/;True;Perfect!;❌`
+
+## Environment
+
+The plugin works in Glyphs 3.1 (3133) in macOS Monterey (12.6) with Python 3.9.1. I've only tested it in current environment, and perhaps it works on earlier or later versions too.
+
+
+***
+
+
+# jf Show Node Count
+
+## 安裝
+
+1. 下載 `jfShowNodeCount.glyphsReporter` ，並以 Glyphs 開啟.
+2. 重新啟動 Glyphs （cmd+Q）.
+3. 於 *File > Font Info > Font > Custom Parameter* 中自行添加參數.
+4. 於 *View > jf Node Count* 啟用.
+
+
+## Custom Parameter
+
+- jf Layer for Count：要比較的圖層名稱，以半形分號區別
+- jf Layer for Count Setting：顯示的設定，共五個值，預設為「20;/;True;✅;❌」，以半形分號分隔設定值
+	- 字體大小，預設為「20」
+    - 分隔號的樣式，預設為「/」
+    - 當比較的圖層們總節點數相同時，是否顯示標記，預設為「True」，若不顯示留空
+    - 當比較的圖層們總節點數「相同時」顯示的標記
+      - 不顯示時留空
+    - 當比較的圖層們總節點數「不相同時」顯示的標記
+      - 不顯示時留空
+
+## 範例
+
+- 不想顯示相同與否的標記：「20;/;;;」
+- 想改用「｜」作為分隔線：「20;｜;True;✅;❌」
+- 字想更大：「50;/;True;✅;❌」
