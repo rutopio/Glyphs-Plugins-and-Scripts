@@ -1,6 +1,6 @@
 # Glyph Compatibility Reporter
 
-A [Glyphs.app](https://glyphsapp.com/) script to check the compatibility for interpolating between two master, and print the report of problem glyphs.
+A [Glyphs.app](https://glyphsapp.com/) script to check the compatibility for interpolating between two masters, and print the report of problem glyphs.
 
 An Chinese version is contained below.
 
@@ -10,35 +10,35 @@ An Chinese version is contained below.
 
 1. Open *Window > Macro Panel*.
 2. Paste the code.
-3. Select the glyphs you want to check on glyphs panel. (cmd+A for all)
+3. Select the glyphs you want to check on the glyphs panel. (cmd+A for all)
 4. Click Run.
 
 ## Custom Setting
 
-In the code, there are some custom value.
+The code contains some custom values:
 
 - `POSITION_TOLERATE`
-  - To check the shape between two masters has similar position, you can set a tolerate value. Default value is `100`. Unit: em.
+  - You can set a tolerance value to check whether two masters have similar positions. Default value is `100`. Unit: em.
   - Avoid shapeshifters, e.g., `: (colon)`.
   - ![](colon.png)
 
 - `ANGLE_TOLERATE`: 
-  - To check the initial point has correct direction and order. Default value is `45`. Unit: degree.
-  - It will check the vector angle between the last node (a.k.a. initial node) and the first node.
+  - Check that the initial point has the correct direction and order. Default value is `45`. Unit: degree.
+  - It will check the vector angle between the last node (a.k.a. the initial node) and the first node.
   - Avoid shapeshifters, e.g., `| (bar)`.
   - ![](bar.png)
 
 - `open_flag`: 
-  - If `1`, open the new tab in edit view with problem glyphs after the result.
-  - You can still read the report in Macro Panel console if you set it to `0`.
+  - If `1`, open the new tab in edit view with the problem glyphs after the result.
+  - You can still read the report in the Macro Panel console if you set it to `0`.
 
 - `former_master_name` and `latter_master_name`:
-  - String, the name of masters you want to compare.
-  - Default value is the first master and the second master. If you have multiple master, you can set it as master's name.]
+  - String, the name of the masters you want to compare.
+  - Default value is the first master and the second master. If you have multiple masters, you can set it as the master's name.
   
 ## Environment
 
-The plugin works in Glyphs 3.1 (3133) in macOS Monterey (12.6) with Python 3.9.1. I've only tested it in current environment, and perhaps it works on earlier or later versions too.
+The plugin works in Glyphs 3.1 (3133) in macOS Monterey (12.6) with Python 3.9.1. I've only tested it in the current environment, and perhaps it works on earlier or later versions too.
 
 *** 
 
