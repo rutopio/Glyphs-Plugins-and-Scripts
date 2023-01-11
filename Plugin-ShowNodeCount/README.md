@@ -1,6 +1,6 @@
 # jf Show Node Count
 
-A [Glyphs.app](https://glyphsapp.com/) plugin to display the count of nodes between multiple layers/masters for checking the compatibility easily.
+A [Glyphs.app](https://glyphsapp.com/) plugin to display the number of nodes between multiple layers/masters for checking compatibility.
 
 An Chinese version is contained below.
 
@@ -15,27 +15,27 @@ An Chinese version is contained below.
 
 ## Custom Parameter
 
-- `jf Layer for Count` (*required*)：The layer/master names, separated by semicolon.
-  - e.g., `Regular; Medium; Bold`.
+- `jf Layer for Count` (*required*)：The layer/master names, separated by a semicolon.
+  - E.g., `Regular; Medium; Bold`.
 - `jf Layer for Count Setting` (*optional*)：Display setting.
-  - default: `20;/;True;✅;❌`, separated by semicolon.
+  - Default: `20;/;True;✅;❌`, separated by a semicolon.
   - val 1: Font size
-      - default: `20`.
+      - Default: `20`.
   - val 2: Style of the delimiter
-      - default: `/`.
+      - Default: `/`.
   - val 3: Whether to show the emoji/sign when the layers have the same number of nodes or not.
-      - default: `True`. Keep it clear if you don't need it.
-  - val 4: When the layers have the same count of nodes.
-      - default: `✅`. Keep it clear if you don't need it.
-  - val 5: When the layers do not have the same count of nodes.
-      - default: `❌`. Keep it clear if you don't need it.
+      - Default: `True`. Keep it clear if you don't need it.
+  - val 4: When the layers have the same number of nodes.
+      - Default: `✅`. Keep it clear if you don't need it.
+  - val 5: When the layers do not have the same number of nodes.
+      - Default: `❌`. Keep it clear if you don't need it.
 
 ## Example
 
 - Do not show the emoji: `20;/;;;`.
 - Use "|" as the delimiter: `20;｜;True;✅;❌`.
 - Larger font size: `50;/;True;✅;❌`.
-- Show "Perfect!" when layers have the same count of nodes: `20;/;True;Perfect!;❌`.
+- Show "Perfect!" when layers have the same number of nodes: `20;/;True;Perfect!;❌`.
 - ...and so on!
 
 
@@ -43,7 +43,7 @@ An Chinese version is contained below.
 
 ## Environment
 
-The plugin works in Glyphs 3.1 (3133) in macOS Monterey (12.6) with Python 3.9.1. I've only tested it in current environment, and perhaps it works on earlier or later versions too.
+The plugin works in Glyphs 3.1 (3133) in macOS Monterey (12.6) with Python 3.9.1. I've only tested it in the current environment, and perhaps it works on earlier or later versions too.
 
 
 ***
