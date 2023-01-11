@@ -1,12 +1,12 @@
 # Suffix Renamer
 
-A [Glyphs.app](https://glyphsapp.com/) script to rename the suffix of glyph name. 
+A [Glyphs.app](https://glyphsapp.com/) script to rename the suffix of glyph names. 
 
-The default suffix of duplicate glyph in Glyphs is `*.001`, `*.002` and so on. For example, the duplicate glyph of `A` is `A.001`. 
+The default suffix of duplicate glyphs in Glyphs is `*.001`, `*.002` and so on. For example, the duplicate glyph for `A` is `A.001`. 
 
-However, if we want to create the stylistic set, it will be inconvenience. This script can help you rename the glyph ended in `*.00x` to `*.ss0x` where `x` is between `1` to `20`.
+In contrast, if we want to create the stylistic set, it would be inconvenient. This script can help you rename the glyph ending in `*.00x` to `*.ss0x` where `x` is between `1` and `20`.
 
-Noticed that the maximum number of sets is twenty, your suffixes can go all the way up to `*.ss20`. [^1]
+Noticed that the maximum number of sets is twenty. Your suffixes can go all the way up to `*.ss20`. [^1]
 
 An Chinese version is contained below.
 
@@ -15,7 +15,7 @@ An Chinese version is contained below.
 1. Open *Window > Macro Panel*
 2. Paste the code.
 3. Click Run.
-4. Read the console lod if there has an error.
+4. Read the console log if there is an error.
 
 
 ***
