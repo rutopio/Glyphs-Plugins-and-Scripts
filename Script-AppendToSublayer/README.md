@@ -1,5 +1,5 @@
 
-# Master SubLayerized
+# Append To Sublayer
 
 A [Glyphs.app](https://glyphsapp.com/) script to copy a layer/master to another master, making the former as a the latter's sublayer.
 
@@ -27,7 +27,7 @@ print(Glyphs.font.selectedLayers[0].layerId)
 ### Steps
 
 1. Check *File > Font Info > Masters* has at least two master, find the both masters' id.
-1. open *Window > Macro Panel*.
+1. Open *Window > Macro Panel*.
 1. Paste the code.
 2. Click Run.
 3. Remove the useless master.
@@ -43,9 +43,9 @@ print(Glyphs.font.selectedLayers[0].layerId)
 
 ## Why you need this?
 
-- For easily setting instance and interpolating.
-- Reducing the file size.
-- Making the banner of panel less icon.
+- For setting instances and interpolating easily.
+- Reduce the file size.
+- Making the panel-less icon banner.
 
 |Before|After|
 |:---:|:---:|
@@ -53,7 +53,7 @@ print(Glyphs.font.selectedLayers[0].layerId)
 
 ***
 
-# Master SubLayerized
+# Append To Sublayer
 
 複製某一個主板到另一個主板中，使前者成為後者的子圖層。
 

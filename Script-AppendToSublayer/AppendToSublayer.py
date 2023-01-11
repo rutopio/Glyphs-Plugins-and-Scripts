@@ -1,11 +1,11 @@
-#MenuTitle: Append Master To SubLayer
+#MenuTitle: Append To SubLayer
 #Created by ChingRu
 # -*- coding: utf-8 -*-
 __doc__="""
 A Glyphs.app script to copy a layer/master to another master, making the former as a the latter's sublayer.
 """
 
-MacroTab.title = "Append Master To SubLayer"
+MacroTab.title = "Append To SubLayer"
 Glyphs.clearLog()
 
 attach_layer_id = ATTACH_LAYER_ID
