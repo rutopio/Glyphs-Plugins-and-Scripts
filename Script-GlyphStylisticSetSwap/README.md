@@ -2,7 +2,7 @@
 
 A [Glyphs.app](https://glyphsapp.com/) script to swap the glyphs between the first stylistic set (`*.ss01`) and the default set (`*`).
 
-Pythonic Style explanation:
+Pythonic style explanation:
 
 ```
 A, A.ss01 = A.ss01, A
@@ -14,7 +14,7 @@ An Chinese version is contained below.
 
 1. Open *Window > Macro Panel*.
 2. Paste the code.
-3. Paste the glyph name into `swap` line.
+3. Paste the glyph name into `swap` list.
 4. Click Run.
 
 
