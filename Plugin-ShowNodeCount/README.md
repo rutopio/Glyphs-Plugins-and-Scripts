@@ -17,6 +17,10 @@ An Chinese version is contained below.
 
 - `jf Layer for Count` (*required*)：The layer/master names, separated by a semicolon.
   - E.g., `Regular; Medium; Bold`.
+  - Use `::` operator to connect parent layer name and child layer name to specific layer if there has the same name.
+    - E.g., `Light::Ref;Bold::Ref`.
+  - If you have interpolate sublayer, concat the master name and interpolate sublayer name with a blank. Noticed that Glyphs using `‹` rather than using `<`.
+    - E.g., `Light [500‹wg];Bold [500‹wg] `
 - `jf Layer for Count Setting` (*optional*)：Display setting.
   - Default: `20;/;True;✅;❌`, separated by a semicolon.
   - val 1: Font size
@@ -66,6 +70,10 @@ The plugin works in Glyphs 3.1 (3133) in macOS Monterey (12.6) with Python 3.9.1
 ## Custom Parameter
 
 - `jf Layer for Count`：要比較的圖層名稱，以半形分號區別
+  - 當不同主板間有相同的圖層名稱時，可以使用 `::` 運算符串接子父圖層的名字，以用來指定某圖層
+    - E.g., `Light::Ref;Bold::Ref`。
+  - 會用到方括號插值的場合，請再主板跟圖層名稱間空一格，且小於使用「‹」而非「<」。
+    - E.g., `Light [500‹wg];Bold [500‹wg] `
 - `jf Layer for Count Setting`：顯示的設定，共五個值，預設為 `20;/;True;✅;❌` ，以半形分號分隔設定值
 	- 字體大小，預設為 `20`
     - 分隔號的樣式，預設為 `/`

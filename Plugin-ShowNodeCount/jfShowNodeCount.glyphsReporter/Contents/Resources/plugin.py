@@ -65,6 +65,20 @@ class jfShowNodeCount(ReporterPlugin):
 				name = name.strip()
 				nodeCount = 0
 				try:
+					if "::" in name: #when nested layer
+						parentLayerName, childLayerName = name.split("::")
+						for m in Glyphs.font.masters:
+							if m.name == parentLayerName:
+								associatedMasterId = m.id
+						for layer in glyph.layers:
+							if layer.name == childLayerName:
+								if layer.associatedMasterId == associatedMasterId:
+									layerID = layer.layerId
+									name = layerID
+				except:
+					pass
+
+				try:
 					sublayer = glyph.layers[name]
 					for thisPath in sublayer.paths:
 						nodeCount += len(thisPath.nodes)
