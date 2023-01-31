@@ -2,7 +2,7 @@
 
 A [Glyphs.app](https://glyphsapp.com/) plugin to display the number of nodes between multiple layers/masters for checking compatibility.
 
-An Chinese version is contained below.
+A Chinese version is contained below.
 
 ![](default.png)
 

@@ -8,7 +8,7 @@ In contrast, if we want to create the stylistic set, it would be inconvenient. T
 
 Noticed that the maximum number of sets is twenty. Your suffixes can go all the way up to `*.ss20`. [^1]
 
-An Chinese version is contained below.
+A Chinese version is contained below.
 
 ## How to Use
 

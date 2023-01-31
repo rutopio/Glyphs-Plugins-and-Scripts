@@ -5,7 +5,7 @@ A [Glyphs.app](https://glyphsapp.com/) script to copy a layer/master to another 
 
 Sometimes we need a reference layer from other master, however, we don't need the whole master at all.
 
-An Chinese version is contained below.
+A Chinese version is contained below.
 
 ## How to Use
 

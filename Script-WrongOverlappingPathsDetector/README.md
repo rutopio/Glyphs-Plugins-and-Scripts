@@ -6,7 +6,7 @@ A [Glyphs.app](https://glyphsapp.com/) script to find the wrong direction whenev
 
 It is commonly found when we use `Reconnect Nodes` to split one shape into two. The glyph will have blank intersections if the condition is unresolved.
 
-An Chinese version is contained below.
+A Chinese version is contained below.
 
 ## How to Use
 

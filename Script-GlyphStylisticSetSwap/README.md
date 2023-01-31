@@ -8,7 +8,7 @@ Pythonic style explanation:
 A, A.ss01 = A.ss01, A
 ```
 
-An Chinese version is contained below.
+A Chinese version is contained below.
 
 ## How to Use
 

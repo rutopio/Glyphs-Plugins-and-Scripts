@@ -2,7 +2,7 @@
 
 A [Glyphs.app](https://glyphsapp.com/) script to check the compatibility for interpolating between two masters, and print the report of problem glyphs.
 
-An Chinese version is contained below.
+A Chinese version is contained below.
 
 ![](demo.png)
 
