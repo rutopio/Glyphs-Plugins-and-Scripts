@@ -8,9 +8,9 @@ A Glyphs.app script to copy a layer/master to another master, making the former 
 MacroTab.title = "Append To SubLayer"
 Glyphs.clearLog()
 
-attach_layer_id = ATTACH_LAYER_ID
-to_be_sublayer_id = TO_BE_SUBLAYER_LAYER_ID
-new_sublayer_name = NEW_SUBLAYER_NAME
+attachLayerId = ATTACH_LAYER_ID
+toBeSublayerId = TO_BE_SUBLAYER_LAYER_ID
+newSublayerName = NEW_SUBLAYER_NAME
 
 import copy
 
@@ -19,8 +19,8 @@ for idx, layer in enumerate(Glyphs.font.selectedLayers):
 	print(glyph)
 	
 	newLayer = GSLayer()
-	newLayer.name = new_sublayer_name
-	newLayer.associatedMasterId = attach_layer_id # attach to last master
-	newLayer.width = glyph.layers[to_be_sublayer_id].width
-	newLayer.shapes = copy.copy(glyph.layers[to_be_sublayer_id].shapes)
+	newLayer.name = newSublayerName
+	newLayer.associatedMasterId = attachLayerId # attach to last master
+	newLayer.width = glyph.layers[toBeSublayerId].width
+	newLayer.shapes = copy.copy(glyph.layers[toBeSublayerId].shapes)
 	glyph.layers.append(newLayer)

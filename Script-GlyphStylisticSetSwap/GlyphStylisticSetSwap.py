@@ -2,7 +2,7 @@
 #Created by ChingRu
 # -*- coding: utf-8 -*-
 __doc__="""
-A Glyphs.app script to swap the glyphs between the first stylistic set (*.ss01) and the default set (*).
+A Glyphs.app script to swapGlyphs the glyphs between the first stylistic set (*.ss01) and the default set (*).
 """
 
 
@@ -10,19 +10,19 @@ MacroTab.title = "Glyph Stylistic Set Swap"
 font = Glyphs.font	
 Glyphs.clearLog()
 
-swap = list("PASTE_THE_GLYPHS_NAME_YOU_WANT_TO_SWAP")
+swapGlyphs = list("PASTE_THE_GLYPHS_NAME_YOU_WANT_TO_SWAP")
 
-swap_uni = []
+swapGlyphsSet = []
 
-for ch in swap:
+for ch in swapGlyphs:
     print(ch)
     unicode_name = font.glyphs[ch].name
-    swap_uni.append(unicode_name)
+    swapGlyphsSet.append(unicode_name)
 
-swap_uni = list(set(swap_uni))
+swapGlyphsSet = list(set(swapGlyphsSet))
 
-for idx, ch_uni in enumerate(swap_uni):
-    font.glyphs[ch_uni].name = ch_uni+".tmp"
-    font.glyphs[ch_uni+".ss01"].name = ch_uni
-    font.glyphs[ch_uni+".tmp"].name = ch_uni+".ss01"
-    print(f"swap ({idx}/{len(swap_uni)}): {ch_uni} ({swap[idx]}) ")
+for idx, glyph in enumerate(swapGlyphsSet):
+    font.glyphs[glyph].name = glyph + ".tmp"
+    font.glyphs[glyph+".ss01"].name = glyph
+    font.glyphs[glyph+".tmp"].name = glyph + ".ss01"
+    print(f"swapGlyphs ({idx}/{len(swapGlyphsSet)}): {glyph} ({swapGlyphs[idx]}) ")

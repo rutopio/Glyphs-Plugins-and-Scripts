@@ -13,19 +13,19 @@ import math
 import datetime
 global POSITION_TOLERATE
 global ANGLE_TOLERATE
-global former_master_name
-global latter_master_name
+global masterNameFormer
+global masterNameLatter
 
 ##### SETTINGS ####W
 
 POSITION_TOLERATE = 100
 ANGLE_TOLERATE = 45
 
-former_master_name = font.masters[0].name
-latter_master_name = font.masters[1].name
+masterNameFormer = font.masters[0].name
+masterNameLatter = font.masters[1].name
 
 # flag = 1: open problem glyphs in the newtab after running the script
-open_flag = True
+flagOfOpenWindow = True
 
 ################W
 
@@ -33,10 +33,10 @@ class Reports():
 	def __init__(self):
 		self.numOfShapeNotEqual = []
 		self.shapeHasSingularNode = []
-		self.shapeHasTwinNode = []
+		self.shapeHasTwinNodes = []
 		self.wrongPosition = []
 		self.wrongInitNode = []
-		self.wrongTypeOfNode = []
+		self.wrongTypeOfNodes = []
 		self.wrongDirections = []
 	def printLogs(self, flag = 0):
 		print("＊The number of paths is not equal. (glyph name / former master / latter master):")
@@ -52,8 +52,8 @@ class Reports():
 			print("Not Found.")
 		print("-"*20)
 		print("＊Layer contains a path composed of two nodes. It's a line, not a shape. (glyph name / master / No. Path): ")
-		if self.shapeHasTwinNode:
-			print(", ".join([f"{gly[0]}({gly[1]})"  for gly in self.shapeHasTwinNode]))
+		if self.shapeHasTwinNodes:
+			print(", ".join([f"{gly[0]}({gly[1]})"  for gly in self.shapeHasTwinNodes]))
 		else:
 			print("Not Found.")
 		print("-"*20)
@@ -70,8 +70,8 @@ class Reports():
 			print("Not Found.")
 		print("-"*20)
 		print("＊The type of node between two masters might be wrong. (glyph name / No. Path):")
-		if self.wrongTypeOfNode:
-			print(", ".join([f"{gly[0]}({gly[1]})"  for gly in self.wrongTypeOfNode]))
+		if self.wrongTypeOfNodes:
+			print(", ".join([f"{gly[0]}({gly[1]})"  for gly in self.wrongTypeOfNodes]))
 		else:
 			print("Not Found.")
 		print("-"*20)
@@ -86,7 +86,7 @@ class Reports():
 			lttr += "".join([gly[0] for gly in self.shapeHasSingularNode]) + "\n"
 			lttr += "".join([gly[0] for gly in self.wrongPosition])+ "\n"
 			lttr += "".join([gly[0] for gly in self.wrongInitNode])+ "\n"
-			lttr += "".join([gly[0] for gly in self.wrongTypeOfNode])+ "\n"
+			lttr += "".join([gly[0] for gly in self.wrongTypeOfNodes])+ "\n"
 			lttr += "".join([gly[0] for gly in self.wrongDirections])+ "\n"
 			try:
 				if len(lttr) > 6:
@@ -102,90 +102,90 @@ def get_shape_attr(thisShape):
 	nodeTypes = [thisShape.nodes[i].type for i in range(len(thisShape.nodes))]
 	return nodeXs, nodeYs, nodeTypes	
 
-def check_compatibility(layer_former, layer_latter, name):	
-	nodeTypes_former 	= layer_former.compareString()[:-1].split("_")
-	nodeTypes_latter 	= layer_latter.compareString()[:-1].split("_")
-	numberOfshape_former = len(layer_former.shapes)
-	numberOfshape_latter = len(layer_former.shapes)
+def check_compatibility(layerFormer, layerLatter, name):	
+	nodeTypesFormer 	= layerFormer.compareString()[:-1].split("_")
+	nodeTypesLatter 	= layerLatter.compareString()[:-1].split("_")
+	numberOfShapeFormer = len(layerFormer.shapes)
+	numberOfShapeLatter = len(layerFormer.shapes)
 	
-	if numberOfshape_former != numberOfshape_latter: #int compare
-		reports.numOfShapeNotEqual.append( (name, numberOfshape_former, numberOfshape_latter) )
-		numberOfshape = numberOfshape_former
-#		{glyph.name}: The {former_master_name} master has {numberOfshape_former} shapes, while the {latter_master_name} master has {numberOfshape_latter} shapes.
+	if numberOfShapeFormer != numberOfShapeLatter: #int compare
+		reports.numOfShapeNotEqual.append( (name, numberOfShapeFormer, numberOfShapeLatter) )
+		numberOfShape = numberOfShapeFormer
+#		{glyph.name}: The {masterNameFormer} master has {numberOfShapeFormer} shapes, while the {masterNameLatter} master has {numberOfShapeLatter} shapes.
 	else:
-		numberOfshape = numberOfshape_former
+		numberOfShape = numberOfShapeFormer
 		
-	nodeXs_former, nodeYs_former, nodeXs_latter, nodeYs_latter, directions_former, directions_latter = [], [], [] ,[], [], []
+	nodeXsFormer, nodeYsFormer, nodeXsLatter, nodeYsLatter, directionsFormer, directionsLatter = [], [], [] ,[], [], []
 		
-	for shape in layer_former.shapes:	
+	for shape in layerFormer.shapes:	
 		nodeXs, nodeYs, _ = get_shape_attr(shape)
-		nodeXs_former.append(nodeXs)
-		nodeYs_former.append(nodeYs)
-		directions_former.append(shape.direction)
+		nodeXsFormer.append(nodeXs)
+		nodeYsFormer.append(nodeYs)
+		directionsFormer.append(shape.direction)
 		
-	for shape in layer_latter.shapes:
+	for shape in layerLatter.shapes:
 		nodeXs, nodeYs, _ = get_shape_attr(shape)	
-		nodeXs_latter.append(nodeXs)
-		nodeYs_latter.append(nodeYs)
-		directions_latter.append(shape.direction)
+		nodeXsLatter.append(nodeXs)
+		nodeYsLatter.append(nodeYs)
+		directionsLatter.append(shape.direction)
 	
 	# check whether the direciton of each shape is the same
-	for idx, (first, second) in enumerate(zip(directions_former, directions_latter)):
+	for idx, (first, second) in enumerate(zip(directionsFormer, directionsLatter)):
 		if first != second:
 			reports.wrongDirections.append( (name, idx+1) )
 			
 	# check whether there has a shape formed by single/twin node(s).
-	for idx in range(numberOfshape):
-		if len(nodeTypes_former[idx]) < 3: 
-			if nodeTypes_former[idx].endswith("|"): 
-				reports.shapeHasSingularNode.append( (name, former_master_name, idx+1) )
-				# {glyph.name} No. {idx} shape in {former_master_name} only has one node.
+	for idx in range(numberOfShape):
+		if len(nodeTypesFormer[idx]) < 3: 
+			if nodeTypesFormer[idx].endswith("|"): 
+				reports.shapeHasSingularNode.append( (name, masterNameFormer, idx+1) )
+				# {glyph.name} No. {idx} shape in {masterNameFormer} only has one node.
 			else:
-				reports.shapeHasTwinNode.append( (name, former_master_name, idx+1) )
-				# {glyph.name} No. {idx} shape in {former_master_name} only has two node.
-		if len(nodeTypes_latter[idx]) < 3:
-			if nodeTypes_former[idx].endswith("|"):
-				reports.shapeHasSingularNode.append( (name, latter_master_name, idx+1) )
-				# {glyph.name} No. {idx} shape in {latter_master_name} only has one node.
+				reports.shapeHasTwinNodes.append( (name, masterNameFormer, idx+1) )
+				# {glyph.name} No. {idx} shape in {masterNameFormer} only has two node.
+		if len(nodeTypesLatter[idx]) < 3:
+			if nodeTypesFormer[idx].endswith("|"):
+				reports.shapeHasSingularNode.append( (name, masterNameLatter, idx+1) )
+				# {glyph.name} No. {idx} shape in {masterNameLatter} only has one node.
 			else:
-				reports.shapeHasTwinNode.append( (name, latter_master_name,  idx+1) )
-#				{glyph.name} No. {idx} shape in {latter_master_name} only has two node.
+				reports.shapeHasTwinNodes.append( (name, masterNameLatter,  idx+1) )
+#				{glyph.name} No. {idx} shape in {masterNameLatter} only has two node.
 
 		# check the type of each node for compatibility 
-		if nodeTypes_former[idx] != nodeTypes_latter[idx]:
-			reports.wrongTypeOfNode.append( (name, idx+1) )
+		if nodeTypesFormer[idx] != nodeTypesLatter[idx]:
+			reports.wrongTypeOfNodes.append( (name, idx+1) )
 #			{glyph.name} No. {idx} shape has compatibility problem via two master.
 
 	#	# check the position of shape is nearby (via centroid)
-		centX_former = sum(nodeXs_former[idx])/len(nodeXs_former[idx])
-		centY_former = sum(nodeYs_former[idx])/len(nodeYs_former[idx])
-		centX_latter = sum(nodeXs_latter[idx])/len(nodeXs_latter[idx])
-		centY_latter = sum(nodeYs_latter[idx])/len(nodeYs_latter[idx])
-		if abs(centX_former - centX_latter)>POSITION_TOLERATE or abs(centY_former - centY_latter)>POSITION_TOLERATE:
+		centXFormer = sum(nodeXsFormer[idx])/len(nodeXsFormer[idx])
+		centYFormer = sum(nodeYsFormer[idx])/len(nodeYsFormer[idx])
+		centXLatter = sum(nodeXsLatter[idx])/len(nodeXsLatter[idx])
+		centYLatter = sum(nodeYsLatter[idx])/len(nodeYsLatter[idx])
+		if abs(centXFormer - centXLatter)>POSITION_TOLERATE or abs(centYFormer - centYLatter)>POSITION_TOLERATE:
 			reports.wrongPosition.append( (name, idx+1) )
 #			print(idx+1)
-#			print(abs(centX_former - centX_latter))
-#			print(abs(centY_former - centY_latter))
+#			print(abs(centXFormer - centXLatter))
+#			print(abs(centYFormer - centYLatter))
 #			{glyph.name} No. {idx} shape might has compatibility problem due to the worng position.
 	
 	# check the direction and order of initial point
-		end_former = layer_former.shapes[idx].nodes[-1]
-		start_former = layer_former.shapes[idx].nodes[0]
-		rad_former = math.atan2(end_former.y-start_former.y, end_former.x-start_former.x)
-		angle_former = rad_former/math.pi*180
-		if angle_former < 0:
-			angle_former += 360
+		endFormer = layerFormer.shapes[idx].nodes[-1]
+		startFormer = layerFormer.shapes[idx].nodes[0]
+		radFormer = math.atan2(endFormer.y-startFormer.y, endFormer.x-startFormer.x)
+		angleFormer = radFormer/math.pi*180
+		if angleFormer < 0:
+			angleFormer += 360
 		
-		end_latter = layer_latter.shapes[idx].nodes[-1]
-		start_latter = layer_latter.shapes[idx].nodes[0]
-		rad_latter = math.atan2(end_latter.y-start_latter.y, end_latter.x-start_latter.x)
-		angle_latter = rad_latter/math.pi*180
-		if angle_latter < 0:
-			angle_latter += 360
+		endLatter = layerLatter.shapes[idx].nodes[-1]
+		startLatter = layerLatter.shapes[idx].nodes[0]
+		radLatter = math.atan2(endLatter.y-startLatter.y, endLatter.x-startLatter.x)
+		angleLatter = radLatter/math.pi*180
+		if angleLatter < 0:
+			angleLatter += 360
 		
-		if 350 > max(angle_latter, angle_former) - min(angle_latter, angle_former) > ANGLE_TOLERATE:
+		if 350 > max(angleLatter, angleFormer) - min(angleLatter, angleFormer) > ANGLE_TOLERATE:
 			reports.wrongInitNode.append( (name, idx+1) )
-			print(f"{name}({idx+1}) {abs(angle_latter - angle_former)}")
+			print(f"{name}({idx+1}) {abs(angleLatter - angleFormer)}")
 			#{glyph.name} No. {idx} shape should check the direction of initial point
 
 def main():
@@ -194,20 +194,20 @@ def main():
 		glyph = layer.parent
 		uniCode = glyph.name
 		try:
-			glyphname = ("\\u"+uniCode[3:]).encode("utf-8").decode("unicode_escape")
+			glyphName = ("\\u"+uniCode[3:]).encode("utf-8").decode("unicode_escape")
 		except:
-			glyphname = uniCode
+			glyphName = uniCode
 			
-		layer_former = (font.glyphs[uniCode].layers[former_master_name])
-		layer_latter = (font.glyphs[uniCode].layers[latter_master_name])
+		layerFormer = (font.glyphs[uniCode].layers[masterNameFormer])
+		layerLatter = (font.glyphs[uniCode].layers[masterNameLatter])
 		
-		if len(layer_former.paths)>0:
+		if len(layerFormer.paths)>0:
 			try:
-				check_compatibility(layer_former, layer_latter, glyphname)
-				print(f"{idx+1}/{len(Glyphs.font.selectedLayers)} {uniCode} {glyphname}")
+				check_compatibility(layerFormer, layerLatter, glyphName)
+				print(f"{idx+1}/{len(Glyphs.font.selectedLayers)} {uniCode} {glyphName}")
 			except:
-				print("Error!", glyphname)
-				err.append(glyphname)
+				print("Error!", glyphName)
+				err.append(glyphName)
 							
 	if (err):
 		print("-"*20)
@@ -215,13 +215,13 @@ def main():
 		print(err)
 		print("-"*20)
 	print("-"*30, "REPORTS", "-"*30 )
-	reports.printLogs(flag = open_flag)
+	reports.printLogs(flag = flagOfOpenWindow)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 	font.disableUpdateInterface()
-	start_time = datetime.datetime.now()
+	startTime = datetime.datetime.now()
 	main()
-	end_time = datetime.datetime.now()
+	endTime = datetime.datetime.now()
 	print("-"*20)
-	print("Time cost:", end_time - start_time)
+	print("Time cost:", endTime - startTime)
 	font.enableUpdateInterface()

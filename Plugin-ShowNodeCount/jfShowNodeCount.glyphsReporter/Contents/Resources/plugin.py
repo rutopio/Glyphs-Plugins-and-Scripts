@@ -23,8 +23,8 @@ class jfShowNodeCount(ReporterPlugin):
 	@objc.python_method
 	def settings(self):
 		self.menuName = Glyphs.localize({
-			'en': 'jf Node Count',
-			'zh': 'jf Node Count',
+			"en": "jf Node Count",
+			"zh": "jf Node Count",
 			})
 
 	@objc.python_method
@@ -86,21 +86,21 @@ class jfShowNodeCount(ReporterPlugin):
 					pass	
 				layerCount.append(str(nodeCount))
 	
-		y_coord = max(1000, Layer.bounds.origin.y+Layer.bounds.size.height + 50.0)
-		x_coord = max(Layer.width, Layer.bounds.origin.x + Layer.bounds.size.width - 50.0)
+		coordY = max(1000, Layer.bounds.origin.y + Layer.bounds.size.height + 50.0)
+		coordX = max(Layer.width, Layer.bounds.origin.x + Layer.bounds.size.width - 50.0)
 		currentZoom = self.getScale()
 
 		if applyCheck == "True":
 			if len(set(layerCount)) == 1:
-				displayString = yesEmoji+"："
+				displayString = yesEmoji + "："
 			else:
-				displayString = noEmoji+"："
+				displayString = noEmoji + "："
 		else:
 			displayString = ""
 
 		displayString += f" {sepDisplay} ".join(layerCount)
 		
-		self.drawTextAtPoint( displayString, NSPoint(x_coord,y_coord), align='right', fontSize=fontDisplaySize)
+		self.drawTextAtPoint( displayString, NSPoint(coordX, coordY), align="right", fontSize=fontDisplaySize)
 
 	@objc.python_method
 	def background(self, layer):
