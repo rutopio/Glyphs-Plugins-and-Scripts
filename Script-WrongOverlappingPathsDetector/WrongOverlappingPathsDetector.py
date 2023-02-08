@@ -10,18 +10,37 @@ MacroTab.title = "Wrong Overlapping Paths Detector"
 Glyphs.clearLog()
 
 results = []
+tmpLayer = GSLayer()
 intersectionsLayer = GSLayer()
 singlePathLayer = GSLayer()
 
-for idx, glyph in enumerate(Glyphs.font.glyphs):
-	layer = glyph.layers[0]
-	
+for idx, layer in enumerate(Glyphs.font.selectedLayers):
+
 	try:
-		glyphName = ("\\u"+layer.parent.name[3:]).encode("utf-8").decode("unicode_escape")
+		if layer.parent.name.startswith("uni"):
+			glyphName = ("\\u"+layer.parent.name[3:]).encode("utf-8").decode("unicode_escape")
+		else: 
+			glyphName = layer.parent.name
 	except:
 		glyphName = layer.parent.name
 		
-	print(f"{idx}/{len(Glyphs.font.glyphs)} {glyphName}")
+	print(f"{idx+1}/{len(Glyphs.font.selectedLayers)} {glyphName}")
+	
+	allIntersectionsCount = 0
+	for i in range(len(layer.paths)):
+		if layer.paths[i].direction == 1:
+			for j in range(len(layer.paths)):
+				if i == j:
+					continue
+				tmpLayer.shapes = [layer.paths[i], layer.paths[j]]
+				allIntersectionsCount += tmpLayer.intersections().count()
+				tmpLayer.clear()
+
+				singlePathLayer.shapes = [layer.paths[i]]
+				allIntersectionsCount -= singlePathLayer.intersections().count()
+				singlePathLayer.shapes = [layer.paths[j]]
+				allIntersectionsCount -= singlePathLayer.intersections().count()
+				singlePathLayer.clear()
 	
 	clockwisePath = []
 	for idx, path in enumerate(layer.paths):
@@ -29,7 +48,7 @@ for idx, glyph in enumerate(Glyphs.font.glyphs):
 			clockwisePath.append(path)
 
 	intersectionsLayer.shapes = clockwisePath	
-	allIntersectionsCount = intersectionsLayer.intersections().count()
+	allIntersectionsCount += intersectionsLayer.intersections().count()	
 	
 	if allIntersectionsCount > 0 and allIntersectionsCount % 2 == 0:
 	# if a shape has intersection with another one, it will have even intersection.
@@ -45,7 +64,8 @@ for idx, glyph in enumerate(Glyphs.font.glyphs):
 	intersectionsLayer.clear()
 
 print("-"*20)
-print("".join(res))
+print(" ".join(results))
 
 del intersectionsLayer
 del singlePathLayer
+del tmpLayer
