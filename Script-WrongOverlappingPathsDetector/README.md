@@ -6,6 +6,8 @@ A [Glyphs.app](https://glyphsapp.com/) script to find the wrong direction whenev
 
 It is commonly found when we use `Reconnect Nodes` to split one shape into two. The glyph will have blank intersections if the condition is unresolved.
 
+Most problems can be solved by applying `Path > Correct Path Direction`, but a few cannot, that's why I read this script.
+
 A Chinese version is contained below.
 
 
@@ -13,8 +15,9 @@ A Chinese version is contained below.
 
 1. Open *Window > Macro Panel*
 2. Paste the code.
-3. Click Run.
-4. Read the console log.
+3. Select the glyph you want to check.
+4. Click Run.
+5. Read the console log.
 
 ## Algorithm
 
@@ -46,5 +49,6 @@ In addition, we have to exclude self-open corners, which have intersection but n
 
 1. 打開 *Window > Macro Panel*。
 2. 貼上程式碼。
-3. 按 Run。
-4. 若發現有問題的字，在 console 中會顯示有問題的字符名稱。
+3. 選取要檢查的字符。
+4. 按 Run。
+5. 若發現有問題的字，在 console 中會顯示有問題的字符名稱。
