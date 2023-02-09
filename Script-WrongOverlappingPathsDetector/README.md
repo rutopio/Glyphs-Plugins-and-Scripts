@@ -8,12 +8,31 @@ It is commonly found when we use `Reconnect Nodes` to split one shape into two. 
 
 A Chinese version is contained below.
 
+
 ## How to Use
 
 1. Open *Window > Macro Panel*
 2. Paste the code.
 3. Click Run.
 4. Read the console log.
+
+## Algorithm
+
+This wrong overlapping can be found in two condition:
+
+1. A clockwise path overlaps to a counterclockwise path.
+
+![](counterclock+clock.png)
+
+2. Two clockwise paths have overlap.
+
+![](clock+clock.png)
+
+In addition, we have to exclude self-open corners, which have intersection but no overlapping problem:
+
+![](opencorner.png)
+
+
 
 ***
 

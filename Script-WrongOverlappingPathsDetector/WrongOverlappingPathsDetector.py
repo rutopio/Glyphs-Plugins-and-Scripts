@@ -26,34 +26,35 @@ for idx, layer in enumerate(Glyphs.font.selectedLayers):
 		
 	print(f"{idx+1}/{len(Glyphs.font.selectedLayers)} {glyphName}")
 	
+	clockwisePath = []
 	allIntersectionsCount = 0
-	for i in range(len(layer.paths)):
-		if layer.paths[i].direction == 1:
+
+	for i, path in enumerate(layer.paths):
+		if path.direction == 1:
+			clockwisePath.append(path)
 			for j in range(len(layer.paths)):
 				if i == j:
 					continue
+				# a clockwise path overlaps to a counterclockwise path (condition 1)
 				tmpLayer.shapes = [layer.paths[i], layer.paths[j]]
 				allIntersectionsCount += tmpLayer.intersections().count()
 				tmpLayer.clear()
 
+				# exclude self open corner
 				singlePathLayer.shapes = [layer.paths[i]]
 				allIntersectionsCount -= singlePathLayer.intersections().count()
 				singlePathLayer.shapes = [layer.paths[j]]
 				allIntersectionsCount -= singlePathLayer.intersections().count()
 				singlePathLayer.clear()
 	
-	clockwisePath = []
-	for idx, path in enumerate(layer.paths):
-		if path.direction == 1:
-			clockwisePath.append(path)
-
+	# wwo clockwise paths have overlap (condition 2)
 	intersectionsLayer.shapes = clockwisePath	
 	allIntersectionsCount += intersectionsLayer.intersections().count()	
 	
 	if allIntersectionsCount > 0 and allIntersectionsCount % 2 == 0:
-	# if a shape has intersection with another one, it will have even intersection.
+	# if a shape has intersection with another one, it will have even number of intersections.
 		for candidatePath in clockwisePath:
-			# avoid self open corner
+			# exclude self open corner
 			singlePathLayer.shapes = [candidatePath]
 			allIntersectionsCount -= singlePathLayer.intersections().count()
 			singlePathLayer.clear()
