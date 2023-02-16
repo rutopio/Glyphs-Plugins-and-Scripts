@@ -19,8 +19,8 @@ The code contains some custom values:
 - `EXP_DECAY_ALL_WIDTHS_FACTOR` ($\alpha>0$): A factor to adjust the $\gamma$. When $\alpha$ comes smaller, the result kerning becomes smaller.
 - `EXP_DACAY_PROP_FACTOR` ($\beta$)
 - `BASE_KERN` ($\kappa>0$)
-- `MIN_WIDTH` / `MIN_HEIGHT` ($\min_{\kappa}$): The minimum of width/height of each glyph. If the result is less than this value, it will turn to this value.
-- `MAX_WIDTH` / `MAX_HEIGHT` ($\max_{\kappa}$): The maximum of width/height of each glyph. If the result is more than this value, it will turn to this value.
+- `MIN_WIDTH` / `MIN_HEIGHT` ($\min_{k}$): The minimum of width/height of each glyph. If the result is less than this value, it will turn to this value.
+- `MAX_WIDTH` / `MAX_HEIGHT` ($\max_{k}$): The maximum of width/height of each glyph. If the result is more than this value, it will turn to this value.
 
 
 ## Algorithm
@@ -68,7 +68,7 @@ $$
 Finally, we can get:
 
 $$
-\text{SideBearing}_k = \gamma\cdot\kappa\cdot \exp\Big({-P_k*\beta}\Big) 
+\min_{k} \leq\text{SideBearing}_k = \gamma\cdot\kappa\cdot \exp\Big({-P_k*\beta}\Big) \leq \max_{k}
 $$
 
 where $k\in \{L,R,T,B\}$ represents for LSB, RSB, TSB and BSB.
@@ -77,7 +77,11 @@ where $k\in \{L,R,T,B\}$ represents for LSB, RSB, TSB and BSB.
 
 Demo font: [Shippori Mincho](https://fonts.google.com/specimen/Shippori+Mincho?subset=japanese&noto.script=Jpan)
 
-In japanese kana, く(ku), ま(ma), と(to) are usually wide, however, if the font set a fixed width for them, the blank between them and contextual glyphs seems little strange.
+
+
+Normally, Japanese kana く(ku), ま(ma) and と(to) are narrow; however, the blank (white space) between them and contextual glyphs seems odd if the font sets a fixed width for them (in Shippori Mincho, each one is 1000). 
+
+It looks better after adjusting.
 
 
 |Monospaced|Proportional|
