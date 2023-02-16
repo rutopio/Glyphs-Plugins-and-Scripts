@@ -84,10 +84,10 @@ Normally, Japanese kana く(ku), ま(ma) and と(to) are narrow; however, the bl
 It looks better after adjusting.
 
 
-|Monospaced|Proportional|
+|Monospaced|Proportional*1|
 |:---:|:---:|
 |![](image/mono-1.png)|![](image/prop-1.png)|
-|![](image/mono-2.png)|![](image/prop-2.png)*1|
+|![](image/mono-2.png)|![](image/prop-2.png)|
 
 *1: Glyphs does not support exdentation (hanging punctuation) in its editview.
 
