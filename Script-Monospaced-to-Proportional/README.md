@@ -22,6 +22,7 @@ The code contains some custom values:
 - `MIN_WIDTH` / `MIN_HEIGHT` ($\min_{k}$): The minimum of width/height of each glyph. If the result is less than this value, it will turn to this value.
 - `MAX_WIDTH` / `MAX_HEIGHT` ($\max_{k}$): The maximum of width/height of each glyph. If the result is more than this value, it will turn to this value.
 
+You should try different value to test the best display effect.
 
 ## Algorithm
 
