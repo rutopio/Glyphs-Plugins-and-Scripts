@@ -15,6 +15,7 @@ Author: ChingRu (contact@chingru.me)
 - **Glyph Stylistic Set Swap**: to swap the glyphs between the first stylistic set (`*.ss01`) and the default set (`*`).
 - **Suffix Renamer**: to rename the suffix of glyph names. 
 - **Wrong Overlapping Path Detector**: to find the wrong direction whenever two shapes have intersections. 
+- **Monospaced-to-Proportional**: to make a monospaced font into proportional font based on mathmatical method.
 
 # License
 

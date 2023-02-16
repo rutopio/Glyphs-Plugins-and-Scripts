@@ -1,6 +1,6 @@
 # Monospaced to Proportional Font
 
-A [Glyphs.app](https://glyphsapp.com/) script to make the monospaced font to proportional font based on mathmatical method.
+A [Glyphs.app](https://glyphsapp.com/) script to make a monospaced font into proportional font based on mathmatical method.
 
 ## How to Use
 
